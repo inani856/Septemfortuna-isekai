@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Septem Fortuna | Official Reader</title>
+    <title>Septem Fortuna: The Isekai</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -61,7 +61,6 @@
             height: 2px;
             background: var(--accent);
             border-radius: 2px;
-            transition: 0.3s;
         }
 
         /* --- Sidebar --- */
@@ -84,38 +83,33 @@
             display: block;
             transition: 0.2s;
             border-bottom: 1px solid rgba(255,255,255,0.02);
+            cursor: pointer;
         }
 
         .sidebar a:hover { color: var(--accent); background: rgba(59, 130, 246, 0.05); }
 
-        /* Highlight untuk Support Author */
         .sidebar a.support-btn {
             color: var(--accent);
             font-weight: 600;
-            margin-top: 20px;
+            margin: 20px 30px;
             border: 1px solid rgba(59, 130, 246, 0.2);
-            margin-left: 30px;
-            margin-right: 30px;
             text-align: center;
             border-radius: 8px;
         }
 
-        .sidebar a.support-btn:hover {
-            background: var(--accent);
-            color: white;
-        }
+        .close-btn { position: absolute; top: 20px; right: 30px; font-size: 28px; cursor: pointer; color: var(--text-secondary); }
 
-        .close-btn {
-            position: absolute; top: 20px; right: 30px;
-            font-size: 28px; cursor: pointer; color: var(--text-secondary);
-        }
-
-        /* --- Reader UI --- */
-        .reader-container {
+        /* --- Content Layout --- */
+        .container {
             max-width: 750px;
             margin: 110px auto 60px;
             padding: 0 25px;
         }
+
+        .chapter-content { display: none; animation: fadeIn 0.5s ease; }
+        .chapter-content.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .badge {
             font-size: 0.75rem;
@@ -127,82 +121,31 @@
             display: block;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-        }
+        h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: 15px; letter-spacing: -1px; }
 
         .info-bar {
-            display: flex;
-            gap: 25px;
-            font-size: 0.9rem;
+            display: flex; gap: 25px; font-size: 0.9rem;
             color: var(--text-secondary);
             border-bottom: 1px solid var(--border);
-            padding-bottom: 25px;
-            margin-bottom: 40px;
+            padding-bottom: 25px; margin-bottom: 40px;
         }
 
-        .story-body {
-            font-size: 1.15rem;
-            color: #e4e4e7;
-            text-align: justify;
-        }
-
-        .story-body h2 {
-            font-size: 1.4rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            margin: 50px 0 20px;
-            border-left: 3px solid var(--accent);
-            padding-left: 15px;
-        }
-
+        .story-body { font-size: 1.15rem; color: #e4e4e7; text-align: justify; }
+        .story-body h2 { font-size: 1.4rem; font-weight: 500; color: var(--text-primary); margin: 50px 0 20px; border-left: 3px solid var(--accent); padding-left: 15px; }
         .story-body p { margin-bottom: 28px; }
 
         .quote {
             background: rgba(59, 130, 246, 0.05);
-            border-radius: 8px;
-            padding: 25px;
-            margin: 40px 0;
-            font-style: italic;
-            color: var(--accent);
-            border: 1px solid rgba(59, 130, 246, 0.1);
+            border-radius: 8px; padding: 25px; margin: 40px 0;
+            font-style: italic; color: var(--accent); border: 1px solid rgba(59, 130, 246, 0.1);
         }
 
-        /* --- Footer Nav --- */
-        .nav-footer {
-            margin-top: 100px;
-            padding-top: 40px;
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-        }
+        /* --- Footer --- */
+        .nav-footer { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .btn { text-decoration: none; font-size: 0.95rem; font-weight: 500; color: var(--text-secondary); cursor: pointer; padding: 10px 20px; border-radius: 8px; transition: 0.3s; }
+        .btn.primary { background: var(--accent); color: white; }
+        footer { text-align: center; padding: 60px 0; font-size: 0.8rem; color: #27272a; }
 
-        .btn {
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            transition: 0.3s;
-        }
-
-        .btn.primary {
-            background: var(--accent);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 8px;
-        }
-
-        .btn:hover:not(.primary) { color: var(--accent); }
-
-        footer {
-            text-align: center;
-            padding: 60px 0;
-            font-size: 0.8rem;
-            color: #27272a;
-        }
     </style>
 </head>
 <body>
@@ -217,52 +160,78 @@
 
 <div id="sideMenu" class="sidebar">
     <span class="close-btn" onclick="toggleNav(false)">&times;</span>
-    <a href="#">Chapter 1: Awakening</a>
-    <a href="#" style="opacity: 0.2; cursor: not-allowed;">Chapter 2: Coming Soon</a>
-    
-    <a href="https://whatsapp.com/channel/0029VbCVOpjIiRp2OmyAeK0d" target="_blank" class="support-btn">
-        Support Author
-    </a>
+    <a onclick="showChapter(1)">Chapter 1: Awakening</a>
+    <a onclick="showChapter(2)">Chapter 2: Rimba Predator</a>
+    <a href="https://whatsapp.com/channel/0029VbCVOpjIiRp2OmyAeK0d" target="_blank" class="support-btn">Support Author</a>
 </div>
 
-<div class="reader-container">
-    <header>
-        <span class="badge">Volume 01 • Chapter 01</span>
-        <h1>Kemustahilan yang Terpahat</h1>
-        <div class="info-bar">
-            <span>Runtime: 5 Mins</span>
-            <span>Status: Ongoing</span>
+<div class="container">
+    
+    <div id="ch1" class="chapter-content active">
+        <header>
+            <span class="badge">Volume 01 • Chapter 01</span>
+            <h1>Kemustahilan yang Terpahat</h1>
+            <div class="info-bar"><span>Runtime: 5 Mins</span><span>Status: Ongoing</span></div>
+        </header>
+        <article class="story-body">
+            <h2>I. Fragmen Memori</h2>
+            <p>Kai menatap pantulan dirinya di kolam air suci. Wajahnya mungil, kulitnya bersih, namun matanya menyimpan kedewasaan yang ganjil bagi bocah berusia lima tahun. Di kepalanya, ia masih bisa mendengar hiruk-pikuk kota modern yang kini terasa seperti mimpi buruk dari kehidupan sebelumnya.</p>
+            <p>Di dunia Aethelgard, kekuatan bukan didapat dari latihan fisik semata, melainkan dari belas kasih tujuh entitas agung yang mereka sebut Tujuh Dewa Keberuntungan.</p>
+
+            <h2>II. Ambang Batas Suci</h2>
+            <p>"Kai, luruskan punggungmu," bisik ibunya, Elena. Mereka berdiri di depan Altar Agung. Ribuan mata tertuju pada mereka, menunggu keajaiban tahunan yang menentukan strata sosial seseorang selamanya.</p>
+            <p>Pendeta Agung mengangkat tongkat peraknya. Udara mendadak menjadi padat, bergetar oleh energi mana yang murni. "Satu jiwa, satu Dewa. Itulah hukum alam. Jika kau beruntung mendapatkan satu persen esensi, kau akan menjadi orang hebat," suara Pendeta itu menggema.</p>
+
+            <div class="quote">
+                "Satu persen adalah berkah. Dua persen adalah keajaiban. Tapi hari ini, hukum alam itu akan dihancurkan oleh seorang bocah berusia lima tahun."
+            </div>
+
+            <h2>III. Ledakan Tujuh Pilar</h2>
+            <p>Saat ujung tongkat menyentuh dahi Kai, langit-langit kuil seolah lenyap, digantikan hamparan bintang tak terbatas. Tiba-tiba, tujuh ledakan cahaya terjadi bersamaan. Merah, Biru, Emas, Hijau, Putih, Ungu, dan Hitam.</p>
+            <p>Batu Ramalan di tengah aula mulai menjerit, memancarkan asap perak sebelum retak menjadi berkeping-keping. Angka emas muncul di udara: <strong>Masing-masing 5% untuk setiap Dewa. Total 35% Esensi Ilahi.</strong></p>
+
+            <h2>IV. Sang Buronan Terlahir</h2>
+            <p>"Tangkap dia!" teriak Pendeta Agung dengan suara gemetar karena takut. "Dia bukan menerima berkah... dia mencuri otoritas langit! Dia adalah anomali yang akan menelan dunia!"</p>
+            <p>Waktu seolah membeku bagi Kai. Insting tempur dari Dewa Perang bangkit seketika. Dengan kecepatan yang tak masuk akal, ia melompat melewati barisan penjaga, menghancurkan jendela raksasa kuil, dan menghilang ke dalam Hutan Larangan.</p>
+
+            <p><em>"Dunia menginginkan monster? Maka aku akan menjadi monster yang mereka takuti,"</em> gumam Kai sambil berlari kencang, meninggalkan takdir lamanya di belakang.</p>
+        </article>
+        <div class="nav-footer">
+            <span></span>
+            <a class="btn primary" onclick="showChapter(2)">Next Chapter</a>
         </div>
-    </header>
-
-    <article class="story-body">
-        <h2>I. Fragmen Memori</h2>
-        <p>Kai menatap pantulan dirinya di kolam air suci. Wajahnya mungil, kulitnya bersih, namun matanya menyimpan kedewasaan yang ganjil bagi bocah berusia lima tahun. Di kepalanya, ia masih bisa mendengar hiruk-pikuk kota modern yang kini terasa seperti mimpi buruk dari kehidupan sebelumnya.</p>
-        <p>Di dunia Aethelgard, kekuatan bukan didapat dari latihan fisik semata, melainkan dari belas kasih tujuh entitas agung yang mereka sebut Tujuh Dewa Keberuntungan.</p>
-
-        <h2>II. Ambang Batas Suci</h2>
-        <p>"Kai, luruskan punggungmu," bisik ibunya, Elena. Mereka berdiri di depan Altar Agung. Ribuan mata tertuju pada mereka, menunggu keajaiban tahunan yang menentukan strata sosial seseorang selamanya.</p>
-        <p>Pendeta Agung mengangkat tongkat peraknya. Udara mendadak menjadi padat, bergetar oleh energi mana yang murni. "Satu jiwa, satu Dewa. Itulah hukum alam. Jika kau beruntung mendapatkan satu persen esensi, kau akan menjadi orang hebat," suara Pendeta itu menggema.</p>
-
-        <div class="quote">
-            "Satu persen adalah berkah. Dua persen adalah keajaiban. Tapi hari ini, hukum alam itu akan dihancurkan oleh seorang bocah berusia lima tahun."
-        </div>
-
-        <h2>III. Ledakan Tujuh Pilar</h2>
-        <p>Saat ujung tongkat menyentuh dahi Kai, langit-langit kuil seolah lenyap, digantikan hamparan bintang tak terbatas. Tiba-tiba, tujuh ledakan cahaya terjadi bersamaan. Merah, Biru, Emas, Hijau, Putih, Ungu, dan Hitam.</p>
-        <p>Batu Ramalan di tengah aula mulai menjerit, memancarkan asap perak sebelum retak menjadi berkeping-keping. Angka emas muncul di udara: <strong>Masing-masing 5% untuk setiap Dewa. Total 35% Esensi Ilahi.</strong></p>
-
-        <h2>IV. Sang Buronan Terlahir</h2>
-        <p>"Tangkap dia!" teriak Pendeta Agung dengan suara gemetar karena takut. "Dia bukan menerima berkah... dia mencuri otoritas langit! Dia adalah anomali yang akan menelan dunia!"</p>
-        <p>Waktu seolah membeku bagi Kai. Insting tempur dari Dewa Perang bangkit seketika. Dengan kecepatan yang tak masuk akal, ia melompat melewati barisan penjaga, menghancurkan jendela raksasa kuil, dan menghilang ke dalam Hutan Larangan.</p>
-
-        <p><em>"Dunia menginginkan monster? Maka aku akan menjadi monster yang mereka takuti,"</em> gumam Kai sambil berlari kencang, meninggalkan takdir lamanya di belakang.</p>
-    </article>
-
-    <div class="nav-footer">
-        <a href="#" class="btn">Back to List</a>
-        <a href="#" class="btn primary">Next Chapter</a>
     </div>
+
+    <div id="ch2" class="chapter-content">
+        <header>
+            <span class="badge">Volume 01 • Chapter 02</span>
+            <h1>Rimba Para Predator</h1>
+            <div class="info-bar"><span>Hutan Terlarang</span><span>6 Menit Membaca</span></div>
+        </header>
+        <article class="story-body">
+            <h2>I. Garis Batas Kemanusiaan</h2>
+            <p>Napas Kai tersengal, uap putih keluar dari mulutnya di tengah dinginnya malam. Di belakangnya, suara gong peringatan dari Kuil Agung Aethelgard masih terdengar bersahutan. Ia telah melewati tembok pembatas kota dan kini berdiri di depan vegetasi raksasa yang dikenal sebagai Silvanus Shadow—Hutan Terlarang yang bahkan ksatria berpangkat tinggi pun enggan memasukinya.</p>
+            
+            <h2>II. Insting yang Terjaga</h2>
+            <p>Kai melangkah masuk. Kegelapan hutan itu hampir mutlak, namun matanya yang diberkati mampu menangkap detail kecil. Ia bisa melihat aliran mana yang mengalir di akar pohon, seolah-olah dunia ini memiliki pembuluh darah yang berpendar.</p>
+            
+            <div class="quote">"35% bukan sekadar angka. Ini adalah mesin penghancur."</div>
+
+            <h2>III. Tarian Maut Sang Bocah</h2>
+            <p>Seekor Shadow Wolf melompat dengan taring terbuka. Dalam situasi normal, anak berusia lima tahun akan membeku ketakutan. Tapi Kai merasa dunianya melambat secara drastis. Ia memiringkan tubuhnya, meraih ekor serigala itu dan membantingnya ke batang pohon hingga hancur.</p>
+
+            <h2>IV. Guru di Dalam Kegelapan</h2>
+            <p>Di sebuah gua kecil di balik air terjun, ia menemukan wanita tua buta. "Sudah seratus tahun sejak terakhir kali seseorang membawa aroma tujuh dewa masuk ke hutan terkutuk ini," ucapnya. Kai menyadari satu hal: di dunia yang kejam ini, kekuatan besar tanpa pengetahuan adalah hukuman mati. "Ajari aku," kata Kai tegas.</p>
+        </article>
+        <div class="nav-footer">
+            <a class="btn" onclick="showChapter(1)">Back to Chapter 1</a>
+            <span></span>
+        </div>
+    </div>
+ 
+    </header>
+    <span class="badge">volume 05
+ 
 </div>
 
 <footer>
@@ -272,6 +241,13 @@
 <script>
     function toggleNav(open) {
         document.getElementById("sideMenu").style.width = open ? "300px" : "0";
+    }
+
+    function showChapter(n) {
+        document.querySelectorAll('.chapter-content').forEach(el => el.classList.remove('active'));
+        document.getElementById('ch' + n).classList.add('active');
+        window.scrollTo(0, 0);
+        toggleNav(false);
     }
 </script>
 
