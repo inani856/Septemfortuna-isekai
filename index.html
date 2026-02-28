@@ -10,6 +10,7 @@
             --bg: #050505;
             --surface: #0d0d0d;
             --accent: #3b82f6;
+            --pesron: #a855f7;
             --text-primary: #ffffff;
             --text-secondary: #a1a1aa;
             --border: #1f1f23;
@@ -25,143 +26,76 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- Navbar --- */
         nav {
             position: fixed;
-            top: 0; width: 100%;
-            height: 65px;
+            top: 0; width: 100%; height: 65px;
             background: rgba(5, 5, 5, 0.85);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 30px;
-            z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 30px; z-index: 1000;
         }
 
-        .logo {
-            font-weight: 600;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            color: var(--text-primary);
-            text-transform: uppercase;
-        }
+        .logo { font-weight: 600; font-size: 1.1rem; letter-spacing: 1px; color: var(--text-primary); text-transform: uppercase; }
 
-        .menu-icon {
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            padding: 10px;
-        }
+        .menu-icon { cursor: pointer; display: flex; flex-direction: column; gap: 5px; padding: 10px; }
+        .menu-icon div { width: 22px; height: 2px; background: var(--accent); border-radius: 2px; }
 
-        .menu-icon div {
-            width: 22px;
-            height: 2px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        /* --- Sidebar --- */
         .sidebar {
-            height: 100%; width: 0;
-            position: fixed; top: 0; right: 0;
-            background: var(--bg);
-            z-index: 2000;
-            overflow-x: hidden;
+            height: 100%; width: 0; position: fixed; top: 0; right: 0;
+            background: var(--bg); z-index: 2000; overflow-x: hidden;
             transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border-left: 1px solid var(--border);
-            padding-top: 80px;
+            border-left: 1px solid var(--border); padding-top: 80px;
         }
 
         .sidebar a {
-            padding: 15px 40px;
-            text-decoration: none;
-            font-size: 1rem;
-            color: var(--text-secondary);
-            display: block;
-            transition: 0.2s;
-            border-bottom: 1px solid rgba(255,255,255,0.02);
-            cursor: pointer;
+            padding: 15px 40px; text-decoration: none; font-size: 1rem;
+            color: var(--text-secondary); display: block; transition: 0.2s; cursor: pointer;
         }
 
         .sidebar a:hover { color: var(--accent); background: rgba(59, 130, 246, 0.05); }
-
-        .sidebar a.support-btn {
-            color: var(--accent);
-            font-weight: 600;
-            margin: 20px 30px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            text-align: center;
-            border-radius: 8px;
-        }
+        .sidebar a.support-btn { color: var(--accent); font-weight: 600; margin: 20px 30px; border: 1px solid rgba(59, 130, 246, 0.2); text-align: center; border-radius: 8px; }
 
         .close-btn { position: absolute; top: 20px; right: 30px; font-size: 28px; cursor: pointer; color: var(--text-secondary); }
 
-        /* --- Content Layout --- */
-        .container {
-            max-width: 750px;
-            margin: 110px auto 60px;
-            padding: 0 25px;
-        }
+        .container { max-width: 750px; margin: 110px auto 60px; padding: 0 25px; }
 
         .chapter-content { display: none; animation: fadeIn 0.5s ease; }
         .chapter-content.active { display: block; }
-
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .badge {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-            display: block;
-        }
-
+        .badge { font-size: 0.75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; display: block; }
         h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: 15px; letter-spacing: -1px; }
 
-        .info-bar {
-            display: flex; gap: 25px; font-size: 0.9rem;
-            color: var(--text-secondary);
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 25px; margin-bottom: 40px;
-        }
+        .info-bar { display: flex; gap: 25px; font-size: 0.9rem; color: var(--text-secondary); border-bottom: 1px solid var(--border); padding-bottom: 25px; margin-bottom: 40px; }
 
         .story-body { font-size: 1.15rem; color: #e4e4e7; text-align: justify; }
         .story-body h2 { font-size: 1.4rem; font-weight: 500; color: var(--text-primary); margin: 50px 0 20px; border-left: 3px solid var(--accent); padding-left: 15px; }
         .story-body p { margin-bottom: 28px; }
 
-        .quote {
-            background: rgba(59, 130, 246, 0.05);
-            border-radius: 8px; padding: 25px; margin: 40px 0;
-            font-style: italic; color: var(--accent); border: 1px solid rgba(59, 130, 246, 0.1);
-        }
+        .quote { background: rgba(59, 130, 246, 0.05); border-radius: 8px; padding: 25px; margin: 40px 0; font-style: italic; color: var(--accent); border: 1px solid rgba(59, 130, 246, 0.1); }
+        .corrupted { border-left-color: var(--pesron) !important; color: var(--pesron) !important; background: rgba(168, 85, 247, 0.05) !important; }
 
-        /* --- Footer --- */
-        .nav-footer { margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-        .btn { text-decoration: none; font-size: 0.95rem; font-weight: 500; color: var(--text-secondary); cursor: pointer; padding: 10px 20px; border-radius: 8px; transition: 0.3s; }
-        .btn.primary { background: var(--accent); color: white; }
+        .nav-footer { margin-top: 100px; padding-top: 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; }
+        .btn { text-decoration: none; font-size: 0.95rem; font-weight: 500; color: var(--text-secondary); cursor: pointer; transition: 0.3s; }
+        .btn.primary { background: var(--accent); color: white; padding: 12px 30px; border-radius: 8px; }
+
         footer { text-align: center; padding: 60px 0; font-size: 0.8rem; color: #27272a; }
-
     </style>
 </head>
 <body>
 
 <nav>
     <div class="logo">SEPTEM FORTUNA</div>
-    <div class="menu-icon" onclick="toggleNav(true)">
-        <div></div>
-        <div></div>
-    </div>
+    <div class="menu-icon" onclick="toggleNav(true)"><div></div><div></div></div>
 </nav>
 
 <div id="sideMenu" class="sidebar">
     <span class="close-btn" onclick="toggleNav(false)">&times;</span>
     <a onclick="showChapter(1)">Chapter 1: Awakening</a>
     <a onclick="showChapter(2)">Chapter 2: Rimba Predator</a>
+    <a onclick="showChapter(3)">Chapter 3: Anomali Pengubah</a>
+    <a onclick="showChapter(4)">Chapter 4: Manifestasi Hitam</a>
     <a href="https://whatsapp.com/channel/0029VbCVOpjIiRp2OmyAeK0d" target="_blank" class="support-btn">Support Author</a>
 </div>
 
@@ -181,20 +115,16 @@
             <h2>II. Ambang Batas Suci</h2>
             <p>"Kai, luruskan punggungmu," bisik ibunya, Elena. Mereka berdiri di depan Altar Agung. Ribuan mata tertuju pada mereka, menunggu keajaiban tahunan yang menentukan strata sosial seseorang selamanya.</p>
             <p>Pendeta Agung mengangkat tongkat peraknya. Udara mendadak menjadi padat, bergetar oleh energi mana yang murni. "Satu jiwa, satu Dewa. Itulah hukum alam. Jika kau beruntung mendapatkan satu persen esensi, kau akan menjadi orang hebat," suara Pendeta itu menggema.</p>
-
-            <div class="quote">
-                "Satu persen adalah berkah. Dua persen adalah keajaiban. Tapi hari ini, hukum alam itu akan dihancurkan oleh seorang bocah berusia lima tahun."
-            </div>
+            <div class="quote">"Satu persen adalah berkah. Dua persen adalah keajaiban. Tapi hari ini, hukum alam itu akan dihancurkan oleh seorang bocah berusia lima tahun."</div>
 
             <h2>III. Ledakan Tujuh Pilar</h2>
             <p>Saat ujung tongkat menyentuh dahi Kai, langit-langit kuil seolah lenyap, digantikan hamparan bintang tak terbatas. Tiba-tiba, tujuh ledakan cahaya terjadi bersamaan. Merah, Biru, Emas, Hijau, Putih, Ungu, dan Hitam.</p>
-            <p>Batu Ramalan di tengah aula mulai menjerit, memancarkan asap perak sebelum retak menjadi berkeping-keping. Angka emas muncul di udara: <strong>Masing-masing 5% untuk setiap Dewa. Total 35% Esensi Ilahi.</strong></p>
+            <p>Batu Ramalan di tengah aula mulai menjerit, memancarkan asap perak sebelum retak menjadi berkeping-keping. Angka emas muncul di udara: Masing-masing 5% untuk setiap Dewa. Total 35% Esensi Ilahi.</p>
 
             <h2>IV. Sang Buronan Terlahir</h2>
             <p>"Tangkap dia!" teriak Pendeta Agung dengan suara gemetar karena takut. "Dia bukan menerima berkah... dia mencuri otoritas langit! Dia adalah anomali yang akan menelan dunia!"</p>
             <p>Waktu seolah membeku bagi Kai. Insting tempur dari Dewa Perang bangkit seketika. Dengan kecepatan yang tak masuk akal, ia melompat melewati barisan penjaga, menghancurkan jendela raksasa kuil, dan menghilang ke dalam Hutan Larangan.</p>
-
-            <p><em>"Dunia menginginkan monster? Maka aku akan menjadi monster yang mereka takuti,"</em> gumam Kai sambil berlari kencang, meninggalkan takdir lamanya di belakang.</p>
+            <p>"Dunia menginginkan monster? Maka aku akan menjadi monster yang mereka takuti," gumam Kai sambil berlari kencang, meninggalkan takdir lamanya di belakang.</p>
         </article>
         <div class="nav-footer">
             <span></span>
@@ -214,7 +144,6 @@
             
             <h2>II. Insting yang Terjaga</h2>
             <p>Kai melangkah masuk. Kegelapan hutan itu hampir mutlak, namun matanya yang diberkati mampu menangkap detail kecil. Ia bisa melihat aliran mana yang mengalir di akar pohon, seolah-olah dunia ini memiliki pembuluh darah yang berpendar.</p>
-            
             <div class="quote">"35% bukan sekadar angka. Ini adalah mesin penghancur."</div>
 
             <h2>III. Tarian Maut Sang Bocah</h2>
@@ -224,14 +153,65 @@
             <p>Di sebuah gua kecil di balik air terjun, ia menemukan wanita tua buta. "Sudah seratus tahun sejak terakhir kali seseorang membawa aroma tujuh dewa masuk ke hutan terkutuk ini," ucapnya. Kai menyadari satu hal: di dunia yang kejam ini, kekuatan besar tanpa pengetahuan adalah hukuman mati. "Ajari aku," kata Kai tegas.</p>
         </article>
         <div class="nav-footer">
-            <a class="btn" onclick="showChapter(1)">Back to Chapter 1</a>
-            <span></span>
+            <a class="btn" onclick="showChapter(1)">Back</a>
+            <a class="btn primary" onclick="showChapter(3)">Next Chapter</a>
         </div>
     </div>
- 
-    </header>
-    <span class="badge">volume 05
- 
+
+    <div id="ch3" class="chapter-content">
+        <header>
+            <span class="badge">Volume 01 • Chapter 03</span>
+            <h1 style="color: var(--pesron);">Anomali Sang Pengubah</h1>
+            <div class="info-bar"><span>Deep Forest</span><span>7 Menit Membaca</span></div>
+        </header>
+        <article class="story-body">
+            <h2>I. Bisikan di Balik Kabut</h2>
+            <p>Enam bulan telah berlalu. Di bawah bimbingan Elara, Kai mulai memahami bahwa 35% energi yang ia miliki bukanlah berkah biasa. Namun, ada sesuatu yang salah. Setiap kali Kai bermeditasi, ia tidak melihat tujuh dewa yang agung, melainkan sesosok bayangan kelabu yang tertawa di kegelapan.</p>
+            
+            <h2>II. Rahasia yang Terlarang</h2>
+            <p>Suatu malam, Elara memegang pergelangan tangan Kai. Wajahnya mendadak pucat. "Energi ini... ada jejak **Pesron** di dalam nadimu," bisiknya gemetar. "Dewa Pengubah. Dia sejak lama sudah dikutuk oleh para dewa serta dikeluarakan dari tempat para dewa karena berkhianat."</p>
+            
+            <div class="quote corrupted">"Kau pikir kau beruntung, bocah? Tidak. Aku mengubahmu agar kau membenci dunia ini. Aku menanamkan benih kegelapan agar kau meratakan Aethelgard atas namaku."</div>
+
+            <h2>III. Manipulasi Takdir</h2>
+            <p>Pesron membuat kerusuhan dengan mengubah Kai menjadi jahat. Ternyata, saat ritual baptis, Pesron menyelinap masuk ke dalam aliran energi tujuh pilar. Ia memanipulasi esensi tersebut untuk menciptakan senjata penghancur yang akan membalaskan dendamnya.</p>
+
+            <h2>IV. Pergolakan Jiwa</h2>
+            <p>Kai merasakan amarah hebat yang bukan miliknya. Efek manipulasi Pesron mulai bekerja, mencoba mengubah sifat Kai menjadi sosok yang haus darah. "Aku bukan alatmu!" teriak Kai menantang suara di kepalanya. Namun Pesron hanya tertawa, menunggu saat yang tepat untuk mengambil alih sepenuhnya.</p>
+        </article>
+        <div class="nav-footer">
+            <a class="btn" onclick="showChapter(2)">back</a>
+             <a class="btn primary" onclick="showChapter(4)">Next Chapter</a>
+        </div>
+    </div>
+
+    <div id="ch4" class="chapter-content">
+        <header>
+            <span class="badge warning">Volume 01 • Chapter 04</span>
+            <h1 style="color: var(--pesron);">Manifestasi Hitam</h1>
+            <div class="info-bar"><span>Silvanus Shadow</span><span>8 Menit Membaca</span></div>
+        </header>
+        <article class="story-body">
+            <h2>I. Ujian Pertama</h2>
+            <p>Pagi itu, Hutan Larangan tidak setenang biasanya. Kelompok ksatria Inquisitor dari Kuil Agung berhasil melacak keberadaan Kai. Elara, sang guru, terkapar setelah mencoba melindungi Kai dari serangan cahaya suci.</p>
+            
+            <h2>II. Kebangkitan Sang Pengubah</h2>
+            <p>Melihat Elara terluka, amarah dingin membakar dada Kai. Suara Pesron kembali berbisik, menawarkan kekuatan untuk menghancurkan mereka yang menyebut diri mereka 'Mulia'. Kai menyerah pada rasa benci itu.</p>
+            
+            <div class="quote corrupted">"Biarkan aku mengubah amarahmu menjadi senjata. Biarkan mereka merasakan kegelapan yang sesungguhnya."</div>
+
+            <h2>III. Kekuatan yang Menyimpang</h2>
+            <p>Tangan kanan Kai diselimuti kabut hitam pekat, kuku-kukunya memanjang, dan satu matanya berubah menjadi kelabu tanpa pupil. Saat pemimpin ksatria menebaskan pedang sucinya, Kai 'mengubah' kepadatan udara menjadi sekeras berlian, menghancurkan pedang itu menjadi serpihan.</p>
+
+            <h2>IV. Harga Sebuah Kekuatan</h2>
+            <p>Para ksatria tumbang dalam hitungan detik. Namun, kemenangan itu menyisakan ketakutan di mata Elara. Di lengan Kai, sebuah pola hitam kini tertanam permanen. Ia telah menggunakan kekuatan Pesron, dan sejak saat itu, jalannya menuju kegelapan telah terbuka lebar.</p>
+        </article>
+        <div class="nav-footer">
+            <a class="btn" onclick="showChapter(3)">Back</a>
+            <a class="btn " onclick="showChapter()">coming soon</a>
+        </div>
+    </div>
+
 </div>
 
 <footer>
@@ -239,10 +219,7 @@
 </footer>
 
 <script>
-    function toggleNav(open) {
-        document.getElementById("sideMenu").style.width = open ? "300px" : "0";
-    }
-
+    function toggleNav(open) { document.getElementById("sideMenu").style.width = open ? "300px" : "0"; }
     function showChapter(n) {
         document.querySelectorAll('.chapter-content').forEach(el => el.classList.remove('active'));
         document.getElementById('ch' + n).classList.add('active');
@@ -252,4 +229,5 @@
 </script>
 
 </body>
-</html>
+                </html>
+                
